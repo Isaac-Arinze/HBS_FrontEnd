@@ -1,4 +1,3 @@
-
 import React from "react";
 import  { NavLink, useNavigate } from "react-router-dom";
 import ApiService from "../../service/ApiService"
@@ -24,7 +23,7 @@ function Navbar(){
 
         <nav className="navbar">
             <div className="navbar-brand">
-                <NavLink to="/home">Sytech Hotel</NavLink>
+                <NavLink to="/home">Skytech Hotel</NavLink>
             </div>
             <ul className ="navbar-ul">
                 <li><NavLink to="/home" activeClass="active"> Home</NavLink> </li>
