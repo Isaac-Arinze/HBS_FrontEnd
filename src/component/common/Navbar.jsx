@@ -8,6 +8,16 @@ function Navbar(){
     const isAuthenticated = ApiService.isAuthenticated();
     const isAdmin = ApiService.isAdmin();
     const isUser = ApiService.isUser();
+    const navigate = useNavigate();
+
+    const handleLogout = () =>{
+        const isLogout = window.confirm("Are you sure you want to logout?");
+        if(isLogout) {
+            ApiService.logout();
+            navigate('/home')
+
+        }
+    }
 
 
     return (
@@ -20,10 +30,11 @@ function Navbar(){
                 <li><NavLink to="/home" activeClass="active"> Home</NavLink> </li>
                 <li><NavLink to="/rooms" activeClass="active">Rooms</NavLink> </li>
                 <li><NavLink to="find-booking" activeClass="active">bookings</NavLink> </li>
-                <li><NavLink to="/profile" activeClass="active"> Profile</NavLink> </li>
-                <li><NavLink to="/login" activeClass="active"> Login</NavLink> </li>
-                <li><NavLink to="/regster" activeClass="active"> Register</NavLink> </li>
-                <li>Logout</li>
+                { isUser && <li><NavLink to="/profile" activeClass="active"> Profile</NavLink> </li>}
+                { isAdmin &&<li><NavLink to="/admin" activeClass="active"> Admin</NavLink> </li>}
+                { isAuthenticated &&<li><NavLink to="/login" activeClass="active"> Login</NavLink> </li>}
+                { isAuthenticated &&<li><NavLink to="/regster" activeClass="active"> Register</NavLink> </li> }
+                { isAuthenticated && <li onClick={handleLogout}>Logout</li> }
 
             </ul>
         
