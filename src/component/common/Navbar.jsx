@@ -4,7 +4,7 @@ import  { NavLink, useNavigate } from "react-router-dom";
 import ApiService from "../../service/ApiService"
 
 
-function Navbar(){{
+function Navbar(){
     const isAuthenticated = ApiService.isAuthenticated();
     const isAdmin = ApiService.isAdmin();
     const isUser = ApiService.isUser();
@@ -12,10 +12,11 @@ function Navbar(){{
 
     return (
 
-        <nav>
-            <div>
+        <nav className="navbar">
+            <div className="navbar-brand">
+                <NavLink to="/home">Sytech Hotel</NavLink>
             </div>
-            <ul>
+            <ul className ="navbar-ul">
                 <li><NavLink to="/home" activeClass="active"> Home</NavLink> </li>
                 <li><NavLink to="/rooms" activeClass="active">Rooms</NavLink> </li>
                 <li><NavLink to="find-booking" activeClass="active">bookings</NavLink> </li>
@@ -23,7 +24,7 @@ function Navbar(){{
                 <li><NavLink to="/login" activeClass="active"> Login</NavLink> </li>
                 <li><NavLink to="/regster" activeClass="active"> Register</NavLink> </li>
                 <li>Logout</li>
-              
+
             </ul>
         
         
@@ -31,5 +32,5 @@ function Navbar(){{
     )
 
 }
-}
+
 export default Navbar;
